@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef _rk_drm_rga_
-#define _rk_drm_rga_
+#ifndef _RK_DRM_RGA_
+#define _RK_DRM_RGA_
 
 #include <stdint.h>
 #include <sys/cdefs.h>
@@ -89,7 +89,6 @@ typedef struct rga_info {
 	int mmuFlag;
 	int reserve[128];
 } rga_info_t;
-
 
 typedef struct drm_rga {
 	rga_rect_t src;

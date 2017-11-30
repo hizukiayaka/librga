@@ -13,15 +13,15 @@
 #ifndef __ROCKCHIP_RGA_MACRO_H__
 #define __ROCKCHIP_RGA_MACRO_H__
 
-/* flip source image horizontally (around the vertical axis) */                                                                                               
+/* flip source image horizontally (around the vertical axis) */
 #define HAL_TRANSFORM_FLIP_H     0x01
-/* flip source image vertically (around the horizontal axis)*/                                                                                                
+/* flip source image vertically (around the horizontal axis)*/
 #define HAL_TRANSFORM_FLIP_V     0x02
-/* rotate source image 90 degrees clockwise */                                                                                                                
+/* rotate source image 90 degrees clockwise */
 #define HAL_TRANSFORM_ROT_90     0x04
-/* rotate source image 180 degrees */                                                                                                                         
+/* rotate source image 180 degrees */
 #define HAL_TRANSFORM_ROT_180    0x03
-/* rotate source image 270 degrees clockwise */                                                                                                               
+/* rotate source image 270 degrees clockwise */
 #define HAL_TRANSFORM_ROT_270    0x07
 
 #endif

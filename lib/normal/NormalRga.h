@@ -10,21 +10,18 @@
  *
  */
 
-#ifndef _rockchip_normal_rga_h_
-#define _rockchip_normal_rga_h_
+#ifndef _NORMAL_RGA_H_
+#define _NORMAL_RGA_H_
 
 #ifdef ANDROID_7_DRM
 #define RGA_BUF_GEM_TYPE_MASK      0xC0
 #define RGA_BUF_GEM_TYPE_DMA       0x80
 #endif
 
-#include <stdint.h>
-#include <vector>
-#include <sys/types.h>
-
-//////////////////////////////////////////////////////////////////////////////////
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <string.h>
 #include <errno.h>
 #include <time.h>
@@ -32,25 +29,38 @@
 #include <fcntl.h>
 
 #include <sys/mman.h>
+#include <sys/types.h>
 #include <linux/stddef.h>
 
-#include "stdio.h"
+#include "drmrga.h"
+#include "rga.h"
 
-#include "../drmrga.h"
-#include "../rga.h"
-#include "NormalRgaContext.h"
+#define __DEBUG 0
+#if __DEBUG
+#define DEBUG(format, ...)  perror(format, ##__VA_ARGS__)
+#else
+#define DEBUG(format, ...)
+#endif
 
-
-/* flip source image horizontally (around the vertical axis) */                                                                                                     
+/* flip source image horizontally (around the vertical axis) */                                                  
 #define HAL_TRANSFORM_FLIP_H     0x01
-/* flip source image vertically (around the horizontal axis)*/                                                                                                      
+/* flip source image vertically (around the horizontal axis)*/                                                     
 #define HAL_TRANSFORM_FLIP_V     0x02
-/* rotate source image 90 degrees clockwise */                                                                                                                      
+/* rotate source image 90 degrees clockwise */                                                                       
 #define HAL_TRANSFORM_ROT_90     0x04
-/* rotate source image 180 degrees */                                                                                                                               
+/* rotate source image 180 degrees */                                                                                  
 #define HAL_TRANSFORM_ROT_180    0x03
-/* rotate source image 270 degrees clockwise */                                                                                                                     
+/* rotate source image 270 degrees clockwise */                                                                       
 #define HAL_TRANSFORM_ROT_270    0x07
+
+#ifdef __cplusplus
+extern "C"{
+#endif
+
+int         RgaInit(void **ctx);
+int         RgaDeInit(void *ctx);
+int         RgaBlit(rga_info_t *src, rga_info_t *dst, rga_info_t *src1);
+int         RgaCollorFill(rga_info_t *dst);
 
 int         RgaInit(void **ctx);
 int         RgaDeInit(void *ctx);
@@ -62,11 +72,11 @@ int         NormalRgaInitTables();
 int         NormalRgaScale();
 int         NormalRgaRoate();
 int         NormalRgaRoateScale();
-int         NormalRgaGetRects(unsigned src, unsigned dst,
-                                int *sType, int *dType, drm_rga_t* tmpRects);
+int         NormalRgaGetRects(unsigned src, unsigned dst, int *sType,
+			      int *dType, drm_rga_t* tmpRects);
 
-int 		RkRgaGetRgaFormat(int format);
-uint32_t 	bytesPerPixel(int format);
+int 	    RkRgaGetRgaFormat(int format);
+uint32_t    bytesPerPixel(int format);
 /*
 @fun NormalRgaSetRects:For use to set the rects esayly
 
@@ -83,7 +93,7 @@ int         NormalRgaGetMmuType(unsigned hnd, int *mmuType);
 int         NormalRgaSetRect(rga_rect_t *rect, int x, int y,
                                                int w, int h, int s, int f);
 void        NormalRgaSetLogOnceFlag(int log);
-void        NormalRgaSetAlwaysLogFlag(bool log);
+void        NormalRgaSetAlwaysLogFlag(int log);
 void        NormalRgaLogOutRgaReq(struct rga_req rgaReg);
 
 int         NormalRgaSetFdsOffsets(struct rga_req *req,
@@ -287,5 +297,8 @@ int         NormalRgaMmuInfo(struct rga_req *msg,
 
 int         NormalRgaMmuFlag(struct rga_req *msg,
                                     int  src_mmu_en,   int  dst_mmu_en);
+#ifdef __cplusplus
+}
+#endif
 
 #endif
