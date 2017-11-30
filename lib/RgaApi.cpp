@@ -1,11 +1,11 @@
+#include <config.h>
 #include "RgaApi.h"
+#include "RockchipRga.h"
+RockchipRga rkRga;
 
 #ifdef __cplusplus
 extern "C"{
 #endif
-
-#include "RockchipRga.h"
-RockchipRga rkRga;
 
 int c_RkRgaInit()
 {

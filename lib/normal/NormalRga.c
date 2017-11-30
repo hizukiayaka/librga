@@ -461,7 +461,6 @@ int RgaBlit(rga_info_t * src, rga_info_t * dst, rga_info_t * src1)
 		dstVirW = relDstRect.wstride;
 		dstVirH = relDstRect.height;
 		dstXPos = relDstRect.width - 1;
-		//dstYPos = relDstRect.yoffset;
 		dstYPos = 0;
 		dstActW = relDstRect.height;
 		dstActH = relDstRect.width;

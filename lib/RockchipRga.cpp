@@ -10,12 +10,7 @@
  *
  */
 
-#define LOG_NDEBUG 0
-#ifdef LOG_TAG
-#undef LOG_TAG
-#define LOG_TAG "rockchiprga"
-#endif
-
+#include <config.h>
 #include <stdint.h>
 #include <sys/types.h>
 #include <math.h>
@@ -23,17 +18,13 @@
 #include <signal.h>
 #include <time.h>
 
+#include "config.h"
 #include "RockchipRga.h"
-//#include "RgaApi.h"
-#include "version.h"
 #include "normal/NormalRga.h"
 
 #include <drm.h>
 #include "drm_mode.h"
 #include "xf86drm.h"
-
-
-// ---------------------------------------------------------------------------
 
 RockchipRga::RockchipRga():
     mSupportRga(false),
@@ -42,7 +33,7 @@ RockchipRga::RockchipRga():
     mContext(NULL)
 {
     RkRgaInit();
-    printf("Rga built version:%s \n", RK_GRAPHICS_VER);
+    printf("Rga built version:%s \n", VERSION);
 }
 
 RockchipRga::~RockchipRga()
@@ -144,7 +135,6 @@ int RockchipRga::RkRgaBlit(rga_info *src, rga_info *dst, rga_info *src1)
     return ret;
 }
 
-
 int RockchipRga::RkRgaCollorFill(rga_info *dst)
 {
     int ret = 0;
@@ -168,8 +158,3 @@ int RockchipRga::RkRgaLogOutUserPara(rga_info *rgaInfo)
         rgaInfo->rotation, rgaInfo->color, rgaInfo->testLog, rgaInfo->mmuFlag);
     return 0;
 }
-
-// ---------------------------------------------------------------------------
-
-
-

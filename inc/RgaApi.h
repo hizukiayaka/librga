@@ -9,6 +9,10 @@
  * option) any later version.
  *
  */
+
+#ifndef _RGA_API_H_
+#define _RGA_API_H_
+
 #include <stdint.h>
 #include <sys/types.h>
 #include <stdlib.h>
@@ -29,7 +33,6 @@
 extern "C"{
 #endif
 
-
 int c_RkRgaInit();
 int c_RkRgaGetAllocBuffer(bo_t *bo_info, int width, int height, int bpp);
 int c_RkRgaGetMmap(bo_t *bo_info);
@@ -37,6 +40,9 @@ int c_RkRgaUnmap(bo_t *bo_info);
 int c_RkRgaGetBufferFd(bo_t *bo_info, int *fd);
 int c_RkRgaBlit(rga_info_t *src, rga_info_t *dst, rga_info_t *src1);
 int c_RkRgaColorFill(rga_info_t *dst);
+
 #ifdef __cplusplus
 }
+#endif
+
 #endif
