@@ -6,6 +6,7 @@ AC_INIT([librga], m4_esyscmd([build-aux/git-version-gen .tarball-version]), [htt
 AM_INIT_AUTOMAKE([-Wno-portability 1.14 no-dist-gzip dist-xz tar-ustar subdir-objects])
 
 AC_CONFIG_HEADERS([config.h])
+PKG_INSTALLDIR
 
 # Checks for programs.
 AC_PROG_CXX
@@ -36,6 +37,7 @@ AC_CHECK_FUNCS([malloc memset munmap strerror])
 AC_CONFIG_FILES([Makefile
 lib/Makefile
 lib/normal/Makefile
+librk_rga.pc
 ])
 
 AC_OUTPUT

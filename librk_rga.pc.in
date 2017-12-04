@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: librk_rga
+Description: Rokchip RGA
+Version: @VERSION@
+Cflags: -I${includedir}/rk_rga
+Libs: -L${libdir} -lrk_rga

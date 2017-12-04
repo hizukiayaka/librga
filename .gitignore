@@ -63,3 +63,4 @@ Build
 /subprojects
 /obj-arm-linux-gnueabihf/
 /obj-aarch64-linux-gnu/
+/librk_rga.pc

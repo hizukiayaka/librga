@@ -16,3 +16,5 @@ rk_rga_include_HEADERS = inc/drmrga.h			\
 			 inc/RockchipRgaMacro.h
 
 rk_rga_includedir = $(includedir)/rk_rga
+
+pkgconfig_DATA = librk_rga.pc
