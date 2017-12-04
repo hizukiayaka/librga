@@ -37,6 +37,7 @@ AC_CHECK_FUNCS([malloc memset munmap strerror])
 AC_CONFIG_FILES([Makefile
 lib/Makefile
 lib/normal/Makefile
+tests/Makefile
 librk_rga.pc
 ])
 

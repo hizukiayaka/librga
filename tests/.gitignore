@@ -1,0 +1,17 @@
+.deps
+.libs
+*.lo
+*.la
+*.o
+*.so
+*.d
+*~
+*.swp
+*.gc??
+Makefile.in
+Makefile
+*~
+*.swp
+*.gc??
+
+rgaRotation
